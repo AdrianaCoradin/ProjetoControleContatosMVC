@@ -20,6 +20,7 @@ namespace ProjetoControleContatosMVC
                 options.UseSqlServer("Data source=DESKTOP-CR06JKF\\SQLSERVER;Initial Catalog=Aplicacao;User Id=sa;Password=adri;TrustServerCertificate=True;MultipleActiveResultSets=true");
             });
             builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
+            builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 
 
             var app = builder.Build();

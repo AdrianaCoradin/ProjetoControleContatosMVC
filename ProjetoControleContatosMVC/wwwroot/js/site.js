@@ -2,8 +2,15 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-$(document).ready(function() {
-    $('#table-contatos').DataTable({
+
+$(document).ready(function () {
+    getDataTable('#table-contatos');
+    getDataTable('#table-usuarios');
+});
+
+function getDataTable(id)
+{
+    $(id).DataTable({
         "ordering": true,
         "paging": true,
         "searching": true,
@@ -31,9 +38,7 @@ $(document).ready(function() {
             }
         }
     });
-});
-
-
+}
 
 //let table = new DataTable('#table-contatos');
 
