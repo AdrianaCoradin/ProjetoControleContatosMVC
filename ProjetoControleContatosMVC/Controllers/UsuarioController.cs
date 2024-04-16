@@ -42,5 +42,11 @@ namespace ProjetoControleContatosMVC.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+        public IActionResult ExcluirConfirmacao(int id)
+        {
+            UsuarioModel usuario = _usuarioRepositorio.ListarPorId(id);
+            return View(usuario);
+        }
     }
 }
