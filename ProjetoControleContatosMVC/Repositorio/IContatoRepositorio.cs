@@ -2,13 +2,13 @@
 
 namespace ProjetoControleContatosMVC.Repositorio
 {
-    public interface IUsuarioRepositorio
+    public interface IContatoRepositorio
     {
-        UsuarioModel ListarPorId(int id);
+        ContatoModel ListarPorId(int id);
 
-        List<UsuarioModel> BuscarTodos();
-        UsuarioModel Adicionar(UsuarioModel usuario);
-        UsuarioModel Atualizar(UsuarioModel usuario);
+        List<ContatoModel> BuscarTodos();
+        ContatoModel Adicionar(ContatoModel contato);
+        ContatoModel Atualizar(ContatoModel contato);
 
         bool Excluir(int id);
     }

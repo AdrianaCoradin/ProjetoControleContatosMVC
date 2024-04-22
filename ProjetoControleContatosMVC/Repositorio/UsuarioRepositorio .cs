@@ -11,6 +11,10 @@ namespace ProjetoControleContatosMVC.Repositorio
         {
             _bancoContext = bancoContext;
         }
+        UsuarioModel IUsuarioRepositorio.BuscarPorLogin(string login)
+        {
+            return _bancoContext.Usuarios.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper()) ;
+        }
 
         public UsuarioModel ListarPorId(int id)
         {
@@ -61,5 +65,7 @@ namespace ProjetoControleContatosMVC.Repositorio
             return true;
 
         }
+
+
     }
 }

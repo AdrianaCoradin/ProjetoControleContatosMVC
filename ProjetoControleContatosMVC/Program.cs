@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using ProjetoControleContatosMVC.Data;
+using ProjetoControleContatosMVC.Helper;
 using ProjetoControleContatosMVC.Repositorio;
 
 namespace ProjetoControleContatosMVC
@@ -11,6 +12,7 @@ namespace ProjetoControleContatosMVC
     {
         public static void Main(string[] args)
         {
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
@@ -19,8 +21,17 @@ namespace ProjetoControleContatosMVC
             {
                 options.UseSqlServer("Data source=DESKTOP-CR06JKF\\SQLSERVER;Initial Catalog=Aplicacao;User Id=sa;Password=adri;TrustServerCertificate=True;MultipleActiveResultSets=true");
             });
+
+            //builder.Services.AddSingleton<IHttpContextAccessor>();
             builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
             builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+            builder.Services.AddScoped<ISessao, Sessao>();
+
+            //builder.Services.AddSession(o =>
+            //{
+            //    o.Cookie.HttpOnly = true;
+            //    o.Cookie.IsEssential = true;
+            //});
 
 
             var app = builder.Build();
@@ -36,9 +47,11 @@ namespace ProjetoControleContatosMVC
 
             app.UseAuthorization();
 
+            app.UseSession();
+
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Login}/{action=Index}/{id?}");
 
             app.Run();
         }
