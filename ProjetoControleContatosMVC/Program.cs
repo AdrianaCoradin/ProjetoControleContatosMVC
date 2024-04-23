@@ -22,16 +22,16 @@ namespace ProjetoControleContatosMVC
                 options.UseSqlServer("Data source=DESKTOP-CR06JKF\\SQLSERVER;Initial Catalog=Aplicacao;User Id=sa;Password=adri;TrustServerCertificate=True;MultipleActiveResultSets=true");
             });
 
-            //builder.Services.AddSingleton<IHttpContextAccessor>();
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); // Registro HttpContextAccessor
             builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
             builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
             builder.Services.AddScoped<ISessao, Sessao>();
 
-            //builder.Services.AddSession(o =>
-            //{
-            //    o.Cookie.HttpOnly = true;
-            //    o.Cookie.IsEssential = true;
-            //});
+            builder.Services.AddSession(o =>
+            {
+                o.Cookie.HttpOnly = true;
+                o.Cookie.IsEssential = true;
+            });
 
 
             var app = builder.Build();
