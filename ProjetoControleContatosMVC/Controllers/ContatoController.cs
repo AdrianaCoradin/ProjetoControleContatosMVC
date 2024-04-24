@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProjetoControleContatosMVC.Filters;
 using ProjetoControleContatosMVC.Models;
 using ProjetoControleContatosMVC.Repositorio;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ProjetoControleContatosMVC.Controllers
 {
+    [PaginaParaUsuarioLogado]
     public class ContatoController : Controller
     {
         private readonly IContatoRepositorio _contatoRepositorio;

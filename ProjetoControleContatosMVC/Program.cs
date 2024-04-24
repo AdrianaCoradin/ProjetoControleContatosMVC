@@ -15,7 +15,7 @@ namespace ProjetoControleContatosMVC
 
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            // Add services to the container.// teste git 
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<BancoContext>(options =>
             {
