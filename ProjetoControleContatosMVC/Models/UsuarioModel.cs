@@ -1,4 +1,5 @@
 ﻿using ProjetoControleContatosMVC.Enums;
+using ProjetoControleContatosMVC.Helper;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProjetoControleContatosMVC.Models
@@ -21,7 +22,13 @@ namespace ProjetoControleContatosMVC.Models
 
         public bool SenhaValida(string senha)
         {
-            return Senha == senha;
+            return Senha == senha.GerarHash();
         }
+
+        public void SetSenhaHash()
+        {
+            Senha = Senha.GerarHash();
+        }
+
     }
 }
