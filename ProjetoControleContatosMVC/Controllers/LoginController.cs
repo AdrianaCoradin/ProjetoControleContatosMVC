@@ -64,7 +64,11 @@ namespace ProjetoControleContatosMVC.Controllers
             {
                 TempData["MensagemErro"] = $"Ops, não conseguimos realizar seu login, tente novamente! Detalhes do erro:{erro.Message}";
                 return RedirectToAction("Index");
-            }        }
+            }       
+        }
+
+
+
         [HttpPost] 
         public IActionResult EnviarLinkRedefinirSenha(RedefinirSenhaModel redefinirSenhaModel)
         {
@@ -76,7 +80,10 @@ namespace ProjetoControleContatosMVC.Controllers
 
                     if (usuario != null)
                     {
-                        TempData["MensagemSucessi"] = $"Enviamos para seu email cadastrado uma nova senha";
+                        string novaSenha = usuario.GerarNovaSenha();
+                        _usuarioRepositorio.Atualizar(usuario);
+
+                        TempData["MensagemSucesso"] = $"Enviamos para seu email cadastrado uma nova senha.";
                         return RedirectToAction("Index", "Login");
                     }
 

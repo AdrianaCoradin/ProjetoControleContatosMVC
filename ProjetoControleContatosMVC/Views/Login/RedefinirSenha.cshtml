@@ -1,7 +1,7 @@
 ﻿@model RedefinirSenhaModel
 @{
     Layout = "_LayoutDeslogado";
-    ViewData["Title"] = "Redefiniir senha";
+    ViewData["Title"] = "Redefinir senha";
 }
 
 @if (TempData["MensagemErro"] != null)
@@ -27,6 +27,6 @@
 
     <div class="d-grid gap-3">
         <button type="submit" class="btn btn-danger btn-block">Redefinir senha</button>
-        <a class="btn btn-danger btn-block" asp-controller="Index" asp-action="Login" role="button">Retornar</a>
+        <a class="btn btn-danger btn-block" asp-controller="Login" asp-action="Index" role="button">Retornar</a>
     </div>
 </form>
