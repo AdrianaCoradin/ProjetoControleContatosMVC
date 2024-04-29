@@ -4,9 +4,9 @@ namespace ProjetoControleContatosMVC.Repositorio
 {
     public interface IContatoRepositorio
     {
-        ContatoModel ListarPorId(int id);
+        ContatoModel ListarPorId(int usuarioId);
 
-        List<ContatoModel> BuscarTodos();
+        List<ContatoModel> BuscarTodos(int id);
         ContatoModel Adicionar(ContatoModel contato);
         ContatoModel Atualizar(ContatoModel contato);
 

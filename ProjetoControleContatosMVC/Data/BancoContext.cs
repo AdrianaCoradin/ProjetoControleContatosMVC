@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
+using ProjetoControleContatosMVC.Data.Map;
 using ProjetoControleContatosMVC.Models;
 
 // Config do banco de dados
@@ -13,5 +14,11 @@ namespace ProjetoControleContatosMVC.Data
 
         public DbSet<ContatoModel> Contatos { get; set; }
         public DbSet<UsuarioModel> Usuarios { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new ContatoMap());
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
