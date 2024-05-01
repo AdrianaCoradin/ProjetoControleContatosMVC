@@ -37,6 +37,7 @@
                 <th scope="col">Login</th>
                 <th scope="col">Email</th>
                 <th scope="col">Perfil</th>
+                <th scope="col">Total de contatos</th>
                 <th scope="col">Data de cadastro</th>
                 <th scope="col"></th>
             </tr>
@@ -53,6 +54,9 @@
                             <td>@usuario.Email</td>
                             <td>@(usuario.Perfil == ProjetoControleContatosMVC.Enums.PerfilEnum.Admin ? "Administrador" : "Padrão" )</td>
                             <td>@usuario.DataCadastro</td>
+                            <td>
+                                <a href="javascript:" class="btn btn-success btn-sm btn-total-contatos">10</a>
+                            </td>
                     <td>
                         <div class="btn-group" role="group">
                             <a role="button"class="btn btn-light" asp-route-id="@usuario.Id" asp-controller="Usuario" asp-action="Editar">Editar</a>
