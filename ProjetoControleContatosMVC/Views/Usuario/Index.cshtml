@@ -27,7 +27,87 @@
         </div>
     }
 
+    <h1 class="display-4">Listagem de usuários</h1>
 
+    <table id="table-usuarios" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Login</th>
+                <th scope="col">Email</th>
+                <th scope="col">Perfil</th>
+                <th scope="col">Total de contatos</th>
+                <th scope="col">Data de cadastro</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @if(Model != null && Model.Any())
+            {
+                foreach(var usuario in Model)
+                {
+                    <tr>
+                        <th scope="row">@usuario.Id</th>
+                        <td>@usuario.Nome</td>
+                        <td>@usuario.Login</td>
+                        <td>@usuario.Email</td>
+                        <td>@usuario.Perfil == ControleDeContatos.Enums.PerfilEnum.Admin ? "Administrador" : "Padrão")</td>
+                        <td>
+                            <a href="javascript:" class="btn btn-success btn-sm btn-total-contatos">
+                                @(usuario.Contatos != null && usuario.Contatos.Any() ? usuario.Contatos.Count() : 0)
+                            </a>
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" asp-action="Editar" asp-controller="Usuario" asp-route-id="@usuario.Id" class="btn btn-primary">Editar</a>
+                                <a role="button" asp-action="ApagarConfirmacao" asp-controller="Usuario" asp-route-id="@usuario.Id" class="btn btn-danger">Apagar</a>
+                            </div>
+                        </td>  
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr class="odd"><td valign="top" colspan="5">Nenhum usuário enccontrado</td></tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="modalContatosUsuario" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">lListagem de contatos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span arial-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                 <table id="table-contatos" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Celular</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>A</td>
+                            <td>A</td>
+                            <td>A</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+        </div>
+    </div>
+</div>
 
 </div>
 
