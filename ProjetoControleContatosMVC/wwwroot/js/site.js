@@ -8,6 +8,8 @@ $(document).ready(function () {
     getDataTable('#table-usuarios');
 
     $('.btn-total-contatos').click(function () {
+        var usuario = $(this).attr('usuario-id')
+
         $('#modalContatosUsuario').modal();
     });
 });

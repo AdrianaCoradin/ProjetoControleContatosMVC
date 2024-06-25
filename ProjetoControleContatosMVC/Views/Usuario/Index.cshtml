@@ -55,7 +55,7 @@
                         <td>@usuario.Email</td>
                         <td>@usuario.Perfil == ControleDeContatos.Enums.PerfilEnum.Admin ? "Administrador" : "Padrão")</td>
                         <td>
-                            <a href="javascript:" class="btn btn-success btn-sm btn-total-contatos">
+                            <a href="javascript:" usuario-id="@usuario.Id" class="btn btn-success btn-sm btn-total-contatos">
                                 @(usuario.Contatos != null && usuario.Contatos.Any() ? usuario.Contatos.Count() : 0)
                             </a>
                         </td>
@@ -86,24 +86,7 @@
                 </div>
                 <div class="modal-body">
 
-                 <table id="table-contatos" class="display" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Celular</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>A</td>
-                            <td>A</td>
-                            <td>A</td>
-                        </tr>
-                    </tbody>
-                </table>
+               
                 </div>
         </div>
     </div>
