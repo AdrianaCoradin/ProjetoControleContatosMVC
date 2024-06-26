@@ -1,6 +1,8 @@
 ﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
+const { get } = require("jquery");
+
 // Write your JavaScript code.
 
 $(document).ready(function () {
@@ -10,7 +12,15 @@ $(document).ready(function () {
     $('.btn-total-contatos').click(function () {
         var usuario = $(this).attr('usuario-id')
 
-        $('#modalContatosUsuario').modal();
+        $.ajax({
+            type: 'GET',
+            url: '/Usuario/listarContatosPorUsuarioId/' + usuarioId,
+            success: function (result) {
+                $("#listaContatosUsuario").html(result);
+                $('#modalContatosUsuario').modal();
+                getDataTable('#table-contatos-usuario');
+            }
+        });    
     });
 });
 
